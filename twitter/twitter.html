@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
+  <title>Document</title>
+
+  <style>
+    :root {
+      --bg: #14202b;
+      --color: white;
+      --hovered: #2c3741;
+      --hovered-opaque: rgb(44, 55, 65, 0.3);
+      --twitter-blue: #009dea;
+
+
+      --left-menu-icon-right-margin: 16px;
+    }
+
+    body {
+      font-family: “Helvetica Neue”, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-template-areas: "leftpanel feed rightpanel";
+    }
+
+    input[type="text"] {
+      color: var(--color);
+    }
+
+    /* LEFT PANEL */
+    .left-panel {
+      grid-area: "leftpanel";
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-right: 1px solid var(--hovered);
+    }
+
+    .left-panel ul {
+      list-style: none;
+    }
+
+    .left-panel ul li {
+      display: flex;
+      align-items: center;
+      color: var(--color);
+      font-size: 20px;
+      padding: 12px;
+      cursor: pointer;
+      border-radius: 30px 30px;
+    }
+
+    .left-panel ul li:hover {
+      background-color: var(--hovered);
+    }
+
+    img {
+      margin: 0;
+      padding: 0;
+    }
+
+    .btn-primary {
+      height: 50px;
+      width: 220px;
+      background-color: var(--twitter-blue);
+      border: none;
+      border-radius: 30px 30px;
+      color: var(--color);
+      font-size: 18px;
+      font-weight: bold;
+      margin-left: 60px;
+      cursor: pointer;
+    }
+
+    .user {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 200px;
+      padding: 8px;
+      border-radius: 30px 30px;
+      position: relative;
+      top: 180px;
+      left: 50px;
+    }
+
+    .user:hover {
+      background-color: var(--hovered);
+    }
+
+    .user .user-data img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-left: -10px;
+    }
+
+    .user .user-data {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .user-name {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 8px;
+    }
+
+    .user-name p {
+      color: var(--color);
+      font-size: 14px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .user-name p:nth-child(1) {
+      font-weight: bold;
+    }
+
+    .user-name p:nth-child(2) {
+      color: rgb(160, 159, 159);
+    }
+
+    .t-twitter {
+      content: url("./twitter.svg");
+    }
+
+    .t-home::before {
+      content: url("./home.svg");
+      margin-right: var(--left-menu-icon-right-margin);
+    }
+
+    .t-explorer::before {
+      content: url("./pound.svg");
+      margin-right: var(--left-menu-icon-right-margin);
+    }
+
+    .t-notifications::before {
+      content: url("./bell-outline.svg");
+      margin-right: var(--left-menu-icon-right-margin);
+    }
+
+    .t-envelope::before {
+      content: url("./email-outline.svg");
+      margin-right: var(--left-menu-icon-right-margin);
+
+    }
+
+    .t-bookmark::before {
+      content: url("./bookmark-outline.svg");
+      margin-right: var(--left-menu-icon-right-margin);
+
+    }
+
+    .t-list::before {
+      content: url("./list.svg");
+      margin-right: var(--left-menu-icon-right-margin);
+
+    }
+
+    .t-profile::before {
+      content: url("./account-outline.svg");
+      margin-right: var(--left-menu-icon-right-margin);
+
+    }
+
+    .t-more-options::before {
+      content: url("./dotsround.svg");
+      margin-right: var(--left-menu-icon-right-margin);
+    }
+
+    /* RIGHT PANEL */
+    .feed {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--hovered);
+    }
+
+    .feed-header {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 10px;
+
+    }
+
+    .feed-title {
+      color: var(--color);
+      font-size: 22px;
+    }
+
+    .feed-write {
+      display: flex;
+      border-bottom: 1px solid var(--hovered);
+      height: 15%;
+    }
+
+    .feed-write img {
+      margin: 0 10px;
+    }
+
+    .feed-write input {
+      margin: 0 10px;
+    }
+
+    .feed-image {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .feed-textfield {
+      width: 100%;
+      margin-left: 16px;
+      height: 60px;
+      font-size: 20px;
+      border: none;
+      background-color: var(--bg);
+      color: var(--hovered);
+      caret-color: var(--hovered);
+      caret-shape: bar;
+    }
+
+    .feed-textfield:active,
+    .feed-textfield:focus {
+      outline: none;
+    }
+
+    .right-panel {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      margin-left: 20px;
+    }
+
+    .search-input {
+      height: 40px;
+      font-size: 18px;
+      background-color: var(--hovered);
+      border: none;
+      border-radius: 20px 20px 20px 20px;
+      width: 100%;
+      margin: 5px 10px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .search-input img {
+      height: 20px;
+      width: 20px;
+      margin: 6px;
+    }
+
+    .search-input input {
+      width: 100%;
+      border-radius: 20px 0px 0 20px;
+      background-color: transparent;
+      border: none;
+    }
+
+    .search-input input:active,
+    .search-input input:focus {
+      outline: none;
+    }
+
+    .tendencies {
+      width: 100%;
+      background-color: var(--hovered-opaque);
+      border-radius: 8px;
+      margin-left: 10px;
+      margin-top: 80px;
+      height: 300px;
+    }
+
+    .tendencies .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin: 6px;
+
+    }
+
+    .tendencies .header h1 {
+      font-size: 20px;
+      color: var(--color);
+      margin: 0;
+    }
+
+    .tendencies .header img {
+      width: 20px;
+      height: 20px;
+    }
+
+
+    .quienseguir {
+      width: 100%;
+      background-color: var(--hovered-opaque);
+      border-radius: 8px;
+      margin-left: 10px;
+      height: 300px;
+      margin-top: 10px;
+    }
+
+    .quienseguir .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin: 6px;
+
+    }
+
+    .quienseguir .header h1 {
+      font-size: 20px;
+      color: var(--color);
+      margin: 0;
+    }
+
+    .quienseguir .header img {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <aside class="left-panel">
+    <ul>
+      <li class="t-twitter"></li>
+      <li class="t-home">Inicio</li>
+      <li class="t-explorer">Explorar</li>
+      <li class="t-notifications">Notificaciones</li>
+      <li class="t-envelope">Mensajes</li>
+      <li class="t-bookmark">Guardados</li>
+      <li class="t-list">Listas</li>
+      <li class="t-profile">Perfil</li>
+      <li class="t-more-options">Más opciones</li>
+    </ul>
+
+    <button class="btn-primary">Twittear</button>
+
+    <div class="user">
+      <div class="user-data">
+        <img
+          src="https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=167"
+          alt="">
+        <div class="user-name">
+          <p>.Randy</p>
+          <p>@Randypj92</p>
+        </div>
+      </div>
+      <img src="./dots-horizontal.svg" alt="">
+    </div>
+  </aside>
+  <section class="feed">
+    <div class="feed-header">
+      <h1 class="feed-title">Inicio</h1>
+      <img class="feed-icon" src="./spark.svg" alt="">
+    </div>
+    <div class="feed-write">
+      <img class="feed-image"
+        src="https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=167"
+        alt="">
+      <input placeholder="Qué está pensando?" type="text" class="feed-textfield">
+    </div>
+    <div class="feed-header-action">
+
+    </div>
+  </section>
+  <aside class="right-panel">
+    <div class="search-input">
+      <img src="./magnify.svg" alt="">
+      <input type="text" placeholder="Buscar en twitter">
+    </div>
+
+    <div class="tendencies">
+      <div class="header">
+        <h1>Tendencias para ti</h1>
+        <img src="./options.svg" alt="">
+      </div>
+    </div>
+
+    <div class="quienseguir">
+      <div class="header">
+        <h1>A quién seguir</h1>
+      </div>
+    </div>
+
+  </aside>
+</body>
+
+</html>
