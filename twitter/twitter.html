@@ -17,17 +17,19 @@
       --hovered: #2c3741;
       --hovered-opaque: rgb(44, 55, 65, 0.3);
       --twitter-blue: #009dea;
-
-
+      --link-blue: #3988ba;
       --left-menu-icon-right-margin: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: “Helvetica Neue”, Helvetica, Arial, sans-serif;
       background-color: var(--bg);
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
       display: grid;
       grid-template-columns: auto auto auto;
       grid-template-areas: "leftpanel feed rightpanel";
@@ -283,8 +285,9 @@
       background-color: var(--hovered-opaque);
       border-radius: 8px;
       margin-left: 10px;
-      margin-top: 80px;
-      height: 300px;
+      margin-top: 40px;
+      height: 400px;
+      overflow: auto;
     }
 
     .tendencies .header {
@@ -306,6 +309,49 @@
       height: 20px;
     }
 
+    .tendencies .body {
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto auto auto auto auto;
+      row-gap: 16px;
+    }
+
+    .tendencies .body .body-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .body-item:hover {
+      background-color: var(--hovered);
+    }
+
+    .tendencies .body .body-item p,
+    h3,
+    a {
+      margin: 0;
+      padding: 0;
+      margin: 2px 10px;
+    }
+
+    .body-item img {
+      margin-right: 10px;
+    }
+
+    .body-item p {
+      color: rgba(202, 214, 226, 0.3);
+      font-size: 14px;
+    }
+
+    .body-item h3 {
+      color: var(--color);
+      font-size: 16px;
+    }
+
+    .tendencies .body a {
+      cursor: pointer;
+      color: var(--link-blue);
+    }
 
     .quienseguir {
       width: 100%;
@@ -321,7 +367,6 @@
       align-items: flex-start;
       justify-content: space-between;
       margin: 6px;
-
     }
 
     .quienseguir .header h1 {
@@ -366,6 +411,7 @@
       <img src="./dots-horizontal.svg" alt="">
     </div>
   </aside>
+
   <section class="feed">
     <div class="feed-header">
       <h1 class="feed-title">Inicio</h1>
@@ -381,6 +427,7 @@
 
     </div>
   </section>
+
   <aside class="right-panel">
     <div class="search-input">
       <img src="./magnify.svg" alt="">
@@ -392,11 +439,61 @@
         <h1>Tendencias para ti</h1>
         <img src="./options.svg" alt="">
       </div>
+      <div class="body">
+        <div class="body-item">
+          <div>
+            <p>Politica - Tendencia</p>
+            <h3>Ucrania</h2>
+              <p>34,7 mil Tweets</p>
+          </div>
+          <img src="./dots-horizontal.svg" alt="" srcset="">
+        </div>
+        <div class="body-item">
+          <div>
+            <p>Politica - Tendencia</p>
+            <h3>Ucrania</h2>
+              <p>34,7 mil Tweets</p>
+          </div>
+          <img src="./dots-horizontal.svg" alt="" srcset="">
+        </div>
+        <div class="body-item">
+          <div>
+            <p>Politica - Tendencia</p>
+            <h3>Ucrania</h2>
+              <p>34,7 mil Tweets</p>
+          </div>
+          <img src="./dots-horizontal.svg" alt="" srcset="">
+        </div>
+        <div class="body-item">
+          <div>
+            <p>Politica - Tendencia</p>
+            <h3>Ucrania</h2>
+              <p>34,7 mil Tweets</p>
+          </div>
+          <img src="./dots-horizontal.svg" alt="" srcset="">
+        </div>
+        <a>Mostrar más</a>
+      </div>
     </div>
 
     <div class="quienseguir">
       <div class="header">
         <h1>A quién seguir</h1>
+      </div>
+
+      <div>
+        <div class="user">
+          <div class="user-data">
+            <img
+              src="https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=167"
+              alt="">
+            <div class="user-name">
+              <p>.Randy</p>
+              <p>@Randypj92</p>
+            </div>
+          </div>
+          <img src="./dots-horizontal.svg" alt="">
+        </div>
       </div>
     </div>
 
